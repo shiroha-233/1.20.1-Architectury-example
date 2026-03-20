@@ -14,12 +14,8 @@
 	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"com.example.template.TemplateMod"
-		],
-		"client": [
-			"com.example.template.client.ClientInit"
-		]
+		"main": [],
+		"client": []
 	},
 	"mixins": [
 		"template-mod.mixins.json"
