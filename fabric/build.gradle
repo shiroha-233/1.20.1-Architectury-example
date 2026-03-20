@@ -37,10 +37,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	// Architectury API - 内嵌到模组中
-	modImplementation("dev.architectury:architectury-fabric:9.2.14") {
+	modImplementation("dev.architectury:architectury-fabric:13.0.6") {
 		exclude group: "net.fabricmc.fabric-api"
 	}
-	include("dev.architectury:architectury-fabric:9.2.14")
+	include("dev.architectury:architectury-fabric:13.0.6")
 }
 
 processResources {
@@ -98,7 +98,7 @@ sourceSets {
             // Avoid JPMS split-package with shaded common (network package) in dev runtime
         }
         resources {
-            exclude 'assets/template-mod/lang/*.json'
+            exclude 'assets/template_mod/lang/*.json'
             exclude 'pack.mcmeta'
         }
     }

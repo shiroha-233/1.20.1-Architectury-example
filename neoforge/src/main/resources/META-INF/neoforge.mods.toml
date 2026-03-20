@@ -1,0 +1,25 @@
+# NeoForge Mods.toml 配置文件
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "template_mod"
+version = "${mod_version}"
+displayName = "Template Mod"
+authors = "Template Author"
+description = '''Template Mod for Architectury'''
+
+[[dependencies.template_mod]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.template_mod]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

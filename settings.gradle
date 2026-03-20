@@ -3,7 +3,12 @@ pluginManagement {
 		// Gradle Plugin Portal 优先（包含 Shadow 等插件）
 		gradlePluginPortal()
 		
-		// Architectury 仓库必须在前面（包含 SNAPSHOT 版本）
+		// 中国镜像源
+		maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+		maven { url = 'https://maven.aliyun.com/repository/public/' }
+		maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
+		
+		// Architectury 仓库
 		maven {
 			name = 'Architectury'
 			url = 'https://maven.architectury.dev/'
@@ -13,16 +18,11 @@ pluginManagement {
 			url = 'https://maven.fabricmc.net/'
 		}
 		maven {
-			name = 'Forge'
-			url = 'https://maven.minecraftforge.net/'
+			name = 'NeoForge'
+			url = 'https://maven.neoforged.net/releases'
 		}
 		
 		mavenCentral()
-		
-		// 中国镜像源（作为备用）
-		maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
-		maven { url = 'https://maven.aliyun.com/repository/public/' }
-		maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
 	}
 }
 
@@ -36,19 +36,18 @@ dependencyResolutionManagement {
 		mavenCentral()
 		maven { url = 'https://maven.fabricmc.net/' }
 		maven { url = 'https://api.modrinth.com/maven' }
-		maven { url = 'https://maven.minecraftforge.net/' }
 
-		// 仅从官方仓库解析 Forge 组件，避免无意义的回退请求
+		// 仅从官方仓库解析 NeoForge 组件，避免无意义的回退请求
 		exclusiveContent {
 			forRepository {
 				maven {
-					name = 'Forge'
-					url = 'https://maven.minecraftforge.net/'
+					name = 'NeoForge'
+					url = 'https://maven.neoforged.net/releases'
 				}
 			}
 			filter {
-				includeGroup 'net.minecraftforge'
-				includeGroupByRegex 'net\\.minecraftforge\\..*'
+				includeGroup 'net.neoforged'
+				includeGroupByRegex 'net\\.neoforged\\..*'
 			}
 		}
 	}
@@ -57,4 +56,4 @@ rootProject.name = 'template-mod'
 // 包含子项目
 include 'common'
 include 'fabric'
-include 'forge'
+include 'neoforge'

@@ -1,11 +1,11 @@
 // 根项目配置 - 多模块项目
 plugins {
 	id 'architectury-plugin' version '3.4-SNAPSHOT'
-	id 'dev.architectury.loom' version '1.6-SNAPSHOT' apply false
+	id 'dev.architectury.loom' version '1.9-SNAPSHOT' apply false
 }
 
 architectury {
-	minecraft = '1.20.1'
+	minecraft = '1.21.1'
 }
 
 allprojects {
@@ -13,12 +13,12 @@ allprojects {
 	apply plugin: 'architectury-plugin'
 	
 	group = maven_group
-	version = '1.0.0-template-1.20.1'
+	version = '1.0.0-template-1.21.1'
 	
 	repositories {
 		maven { url = 'https://maven.architectury.dev/' }
 		maven { url = 'https://maven.fabricmc.net/' }
-		maven { url = 'https://maven.minecraftforge.net/' }
+		maven { url = 'https://maven.neoforged.net/releases' }
 		maven { url = 'https://maven.shedaniel.me/' }
 		maven { url = 'https://maven.terraformersmc.com/' }
         // curseforge与modrinth平台仓库
@@ -49,22 +49,19 @@ allprojects {
 	
 	tasks.withType(JavaCompile).configureEach {
 		options.encoding = 'UTF-8'
-		options.release = 17
+		options.release = 21
 	}
 	
 	java {
 		toolchain {
-			languageVersion = JavaLanguageVersion.of(17)
+			languageVersion = JavaLanguageVersion.of(21)
 		}
 		withSourcesJar()
 	}
 	
-	// 关键：Gradle toolchain 默认只影响编译任务；runClient/Transformer 属于 JavaExec，
-	// 若系统默认 JDK 为 21 可能触发 Architectury Transformer 的已知崩溃。
-	// 这里强制所有 JavaExec 使用 Java 17 launcher，保证开发运行环境一致。
 	tasks.withType(JavaExec).configureEach {
 		javaLauncher = javaToolchains.launcherFor {
-			languageVersion = JavaLanguageVersion.of(17)
+			languageVersion = JavaLanguageVersion.of(21)
 		}
 		// 设置运行游戏时的玩家名称
 		systemProperty 'minecraft.username', rootProject.properties.getOrDefault('minecraft_username', 'Player')
@@ -83,7 +80,7 @@ subprojects {
 	}
 	
 	dependencies {
-		minecraft "com.mojang:minecraft:1.20.1"
+		minecraft "com.mojang:minecraft:1.21.1"
 		mappings loom.officialMojangMappings()
 	}
 	
