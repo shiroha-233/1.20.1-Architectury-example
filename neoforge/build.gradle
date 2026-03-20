@@ -93,10 +93,10 @@ repositories {
 
 tasks.named('processResources', ProcessResources).configure {
     def replaceProperties = [
-        minecraft_version: '1.21.1',
-        minecraft_version_range: '[1.21.1,1.22)',
+        minecraft_version: '1.21.11',
+        minecraft_version_range: '[1.21.11,1.22)',
         neoforge_version: project.neoforge_version,
-        neoforge_version_range: '[21.1,)',
+        neoforge_version_range: '[21.11,)',
         loader_version_range: '[4,)',
         mod_id: 'template_mod',
         mod_name: 'Template Mod',
@@ -121,8 +121,8 @@ dependencies {
     neoForge "net.neoforged:neoforge:${project.neoforge_version}"
 
     // Architectury API - 使用 Jar-in-Jar 内嵌
-    modImplementation("dev.architectury:architectury-neoforge:13.0.6")
-    include("dev.architectury:architectury-neoforge:13.0.6")
+    modImplementation("dev.architectury:architectury-neoforge:19.0.1")
+    include("dev.architectury:architectury-neoforge:19.0.1")
 }
 
 // Source JAR 组装（合并 common 源码）

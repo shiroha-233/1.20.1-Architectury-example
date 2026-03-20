@@ -3,12 +3,7 @@ pluginManagement {
 		// Gradle Plugin Portal 优先（包含 Shadow 等插件）
 		gradlePluginPortal()
 		
-		// 中国镜像源
-		maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
-		maven { url = 'https://maven.aliyun.com/repository/public/' }
-		maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
-		
-		// Architectury 仓库
+		// Architectury 仓库必须在前面（包含 SNAPSHOT 版本）
 		maven {
 			name = 'Architectury'
 			url = 'https://maven.architectury.dev/'
@@ -19,10 +14,16 @@ pluginManagement {
 		}
 		maven {
 			name = 'NeoForge'
-			url = 'https://maven.neoforged.net/releases'
+			url = 'https://maven.neoforged.net/releases/'
 		}
 		
 		mavenCentral()
+		
+		// 中国镜像源（作为备用）
+		maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+		maven { url = 'https://maven.aliyun.com/repository/public/' }
+		maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
+		maven { url = 'https://bmclapi2.bangbang93.com/maven/' }
 	}
 }
 
@@ -32,9 +33,11 @@ dependencyResolutionManagement {
 		maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
 		maven { url = 'https://maven.aliyun.com/repository/public/' }
 		maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
+		maven { url = 'https://bmclapi2.bangbang93.com/maven/' }
 		
 		mavenCentral()
 		maven { url = 'https://maven.fabricmc.net/' }
+		maven { url = 'https://maven.architectury.dev/' }
 		maven { url = 'https://api.modrinth.com/maven' }
 
 		// 仅从官方仓库解析 NeoForge 组件，避免无意义的回退请求
@@ -42,7 +45,7 @@ dependencyResolutionManagement {
 			forRepository {
 				maven {
 					name = 'NeoForge'
-					url = 'https://maven.neoforged.net/releases'
+					url = 'https://maven.neoforged.net/releases/'
 				}
 			}
 			filter {

@@ -37,10 +37,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	// Architectury API - 内嵌到模组中
-	modImplementation("dev.architectury:architectury-fabric:13.0.6") {
+	modImplementation("dev.architectury:architectury-fabric:19.0.1") {
 		exclude group: "net.fabricmc.fabric-api"
 	}
-	include("dev.architectury:architectury-fabric:13.0.6")
+	include("dev.architectury:architectury-fabric:19.0.1")
 }
 
 processResources {

@@ -4,7 +4,7 @@
 
 dependencies {
     // Architectury API（作为 mod 依赖以启用 Loom 重映射）
-    modImplementation("dev.architectury:architectury:13.0.6")
+    modImplementation("dev.architectury:architectury:19.0.1")
     compileOnly("net.fabricmc:fabric-loader:${project.loader_version}")
 }
  
